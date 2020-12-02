@@ -25,6 +25,7 @@ function SignUp() {
     const [password, setPassword] = useState("");
     const [passwordAgain, setPasswordAgain] = useState("");
     const [username, setUsername] = useState("");
+    const [name, setName] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
     function postSignUp() {
@@ -34,6 +35,7 @@ function SignUp() {
             return;
         }
         axios.post("http://localhost:8080/users/register", {
+            name,
             username,
             password
 
@@ -98,6 +100,22 @@ function SignUp() {
                                 value={username}
                                 onChange={e => {
                                     setUsername(e.target.value);
+                                }}
+                            />
+                        </Grid>
+                        <Grid item xs={12} >
+                            <TextField
+                                color="primary"
+                                variant="outlined"
+                                required
+                                fullWidth
+                                name="name"
+                                label="Name"
+                                type="name"
+                                id="name"
+                                value={name}
+                                onChange={e => {
+                                    setName(e.target.value);
                                 }}
                             />
                         </Grid>

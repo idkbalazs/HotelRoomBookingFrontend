@@ -9,6 +9,8 @@ import MainContent from './components/basic/MainContent'
 import Header from "./components/basic/Header";
 import SignIn from "./components/signIn/SignIn";
 import SignUp from "./components/signUp/SignUp";
+import Profile from "./components/profile/Profile";
+import PrivateRoute from "./components/connection/PrivateRoute";
 
 function App() {
   const existingTokens = JSON.parse(sessionStorage.getItem("currentUser"))
@@ -34,6 +36,7 @@ function App() {
                 <Route exact path="/" component={MainContent} />
                 <Route path="/sign-in" component={SignIn}/>
                 <Route path="/sign-up" component={SignUp}/>
+                <PrivateRoute path="/my-profile" component={Profile} />
               </Switch>
               <Footer/>
             </Router>
