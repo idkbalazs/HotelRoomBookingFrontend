@@ -184,11 +184,11 @@ function Profile(props) {
                     </Grid>
                     <Grid item xs={2}/>
                     <Grid item xs={2}/>
-                    <Grid item xs={2}/>
+                    <Grid item xs={3}/>
 
                         <Button
                             variant="contained"
-                            color="primary"
+                            color="secondary"
                             size="small"
                             endIcon={<LockIcon />}
                             onClick={handlePassword}

@@ -12,9 +12,6 @@ import SignUp from "./components/signUp/SignUp";
 import Profile from "./components/profile/Profile";
 import Booking from "./components/booking/Booking";
 import PrivateRoute from "./components/connection/PrivateRoute";
-import Reservations from "./components/Reservations/Reservations";
-import Admin from "./components/admin/Admin";
-import User from "./components/user/User";
 
 function App() {
   const existingTokens = JSON.parse(sessionStorage.getItem("currentUser"))
@@ -41,10 +38,6 @@ function App() {
                 <Route path="/sign-in" component={SignIn}/>
                 <Route path="/sign-up" component={SignUp}/>
                 <PrivateRoute path="/my-profile" component={Profile} />
-
-                <PrivateRoute path="/reservations" component={Reservations} />
-                <PrivateRoute path="/admin" component={Admin} />
-                <PrivateRoute path="/user" component={User} />
                 <PrivateRoute path="/user" component={Booking} />
               </Switch>
               <Footer/>
