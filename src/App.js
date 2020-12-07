@@ -12,6 +12,8 @@ import SignUp from "./components/signUp/SignUp";
 import Profile from "./components/profile/Profile";
 import Booking from "./components/booking/Booking";
 import PrivateRoute from "./components/connection/PrivateRoute";
+import Reservations from "./components/Reservations/UserReservations";
+import Admin from "./components/Reservations/AllReservations";
 
 function App() {
   const existingTokens = JSON.parse(sessionStorage.getItem("currentUser"))
@@ -39,6 +41,8 @@ function App() {
                 <Route path="/sign-up" component={SignUp}/>
                 <PrivateRoute path="/my-profile" component={Profile} />
                 <PrivateRoute path="/user" component={Booking} />
+                <PrivateRoute path="/reservations" component={Reservations} />
+                <PrivateRoute path="/admin" component={Admin} />
               </Switch>
               <Footer/>
             </Router>

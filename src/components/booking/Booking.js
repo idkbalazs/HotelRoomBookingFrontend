@@ -133,7 +133,7 @@ function Booking(){
 
 
     function postReservation() {
-        axios.post(`http://localhost:8080/bookings/${​​​​​authTokens.id}​​​​​`, {
+        axios.post(`http://localhost:8080/bookings/${authTokens.id}`, {
             floor:selectedFloor,
             room:selectedRoom, 
             arriveDate:selectedCheckIn,
@@ -236,7 +236,7 @@ function Booking(){
                                     shouldDisableDate={(date) => {
                                         var booked = false;
                                         bookings.forEach(element => {
-                                            if(element.floor == selectedFloor && element.room == selectedRoom){
+                                            if(element.floor === selectedFloor && element.room === selectedRoom){
                                                     if(moment(date).isSameOrAfter(moment(element.arriveDate)) && moment(date).isSameOrBefore(moment(element.leaveDate))){
                                                         booked = true;
                                                     }
