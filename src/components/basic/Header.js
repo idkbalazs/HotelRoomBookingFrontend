@@ -78,7 +78,7 @@ function Header() {
                                 {authTokens.role==="ROLE_USER" && (<Link to="/reservations" className={classes.profileButton}><MenuItem onClick={handleClose}>User reservations</MenuItem></Link>)}
                                 {authTokens.role==="ROLE_ADMIN" && (<Link to="/admin" className={classes.profileButton}><MenuItem onClick={handleClose}>All reservations</MenuItem></Link>)}
                                 {authTokens.role==="ROLE_USER" && (<Link to="/user" className={classes.profileButton}><MenuItem onClick={handleClose}>Booking</MenuItem></Link>)}
-                                <Link to="/my-profile" className={classes.profileButton}><MenuItem onClick={handleClose}>Profil</MenuItem></Link>
+                                <Link to="/my-profile" className={classes.profileButton}><MenuItem onClick={handleClose}>Profile</MenuItem></Link>
                                 <MenuItem onClick={logOut}>Log out</MenuItem>
                             </Menu>
                         </div>

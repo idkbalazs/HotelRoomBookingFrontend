@@ -16,7 +16,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import dateFormat from 'dateformat';
 import moment from 'moment';
 import { MuiPickersUtilsProvider,DatePicker} from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns"; // import
+import DateFnsUtils from "@date-io/date-fns";
+import {Redirect} from "react-router-dom"; // import
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -43,7 +44,7 @@ function Booking(){
     const [selectedRoom, setSelectedRoom] = useState("");
     const [bookings, setBookings] = useState([]);
     const [bookedDate, setBookedDate] = useState(false);
-
+    const [isRegistered, setRegistered] = useState(false);
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -51,7 +52,12 @@ function Booking(){
         }
         setPosted(false);
         setIsError(false);
+
     };
+
+    if (isRegistered) {
+        return <Redirect to="/reservations" />
+    }
 
     const handleFloorClose = () => {
         setOpenFloor(false);
@@ -145,6 +151,7 @@ function Booking(){
                 setRoom("");
                 setArriveDate("");
                 setLeaveDate("");
+                setRegistered(true);
             }
         }).catch(e => {
             setIsError(true);
