@@ -10,6 +10,7 @@ import Header from "./components/basic/Header";
 import SignIn from "./components/signIn/SignIn";
 import SignUp from "./components/signUp/SignUp";
 import Profile from "./components/profile/Profile";
+import Booking from "./components/booking/Booking";
 import PrivateRoute from "./components/connection/PrivateRoute";
 import Reservations from "./components/Reservations/Reservations";
 import Admin from "./components/admin/Admin";
@@ -40,9 +41,11 @@ function App() {
                 <Route path="/sign-in" component={SignIn}/>
                 <Route path="/sign-up" component={SignUp}/>
                 <PrivateRoute path="/my-profile" component={Profile} />
+
                 <PrivateRoute path="/reservations" component={Reservations} />
                 <PrivateRoute path="/admin" component={Admin} />
                 <PrivateRoute path="/user" component={User} />
+                <PrivateRoute path="/user" component={Booking} />
               </Switch>
               <Footer/>
             </Router>
