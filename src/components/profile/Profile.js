@@ -188,7 +188,7 @@ function Profile(props) {
 
                         <Button
                             variant="contained"
-                            color="secondary"
+                            color="primary"
                             size="small"
                             endIcon={<LockIcon />}
                             onClick={handlePassword}

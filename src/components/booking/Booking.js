@@ -202,18 +202,16 @@ function Booking(){
     
 }
 
-    
-
     if(authTokens.role==="ROLE_USER") {
         return(
             <React.Fragment>
                 <Container maxWidth="lg" className={classes.user}>
                   
                             <Grid container spacing={3} align="center">
-                                <Grid item xs={12} className={classes.gridAll} >
+                                <Grid item xs={12} className={classes.room} >
                                     <Typography variant="h6" >Please choose the room you would like to book!</Typography>
                                 </Grid>
-                                <Grid item xs={12}  className={classes.gridAll}>
+                                <Grid item xs={12}  className={classes.room}>
                                     <FormControl className={classes.textField} color="primary">
                                         <InputLabel required id="floor" shrink>Floor</InputLabel>
                                         {renderUserFields()}
@@ -226,7 +224,7 @@ function Booking(){
                                 
                                    
                             
-                                <Grid item xs={12} className={classes.gridAll}>
+                                <Grid item xs={12} className={classes.room}>
                                     
                                 <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                     <DatePicker
@@ -234,7 +232,7 @@ function Booking(){
                                     format="yyyy-MM-dd"
                                     value={selectedCheckIn}
                                     shouldDisableDate={(date) => {
-                                        var booked = false;
+                                        let booked = false;
                                         bookings.forEach(element => {
                                             if(element.floor === selectedFloor && element.room === selectedRoom){
                                                     if(moment(date).isSameOrAfter(moment(element.arriveDate)) && moment(date).isSameOrBefore(moment(element.leaveDate))){
@@ -247,9 +245,9 @@ function Booking(){
                                     onChange={selectedCheckIn => setSelectedCheckIn(selectedCheckIn)}
                                     minDate={new Date()}
                                     />
-                                     </MuiPickersUtilsProvider>   
-                                  
-
+                                     </MuiPickersUtilsProvider>
+                                </Grid>
+                                    <Grid item xs={12} className={classes.gridAll}>
                                    
                                     <MuiPickersUtilsProvider utils={DateFnsUtils}>
                                     <DatePicker
@@ -258,9 +256,9 @@ function Booking(){
                                     value={selectedCheckOut}
                                     onChange={selectedCheckOut => setSelectedCheckOut(selectedCheckOut)}
                                     shouldDisableDate={(date) => {
-                                        var booked = false;
+                                        let booked = false;
                                         bookings.forEach(element => {
-                                            if(element.floor == selectedFloor && element.room == selectedRoom){
+                                            if(element.floor === selectedFloor && element.room === selectedRoom){
                                                     if(moment(date).isSameOrAfter(moment(element.arriveDate)) && moment(date).isSameOrBefore(moment(element.leaveDate))){
                                                         booked = true;
                                                     }
