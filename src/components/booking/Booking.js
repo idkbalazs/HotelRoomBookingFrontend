@@ -67,6 +67,8 @@ function Booking(){
     const handleFloorOpen = () => {
         setOpenFloor(true);
         getFloors();
+        console.log(selectedCheckIn);
+        console.log(selectedCheckOut);
     };
 
     const handleRoomClose = () => {
@@ -139,11 +141,12 @@ function Booking(){
 
 
     function postReservation() {
+        console.log(selectedCheckIn);
         axios.post(`http://localhost:8080/bookings/${authTokens.id}`, {
             floor:selectedFloor,
             room:selectedRoom, 
-            arriveDate:selectedCheckIn,
-            leaveDate:selectedCheckOut
+            arriveDate:dateFormat(selectedCheckIn, "yyyy-mm-dd"),
+            leaveDate:dateFormat(selectedCheckOut, "yyyy-mm-dd")
         }, {auth: {username:authTokens.username, password:authTokens.password}}).then(result => {
             if (result.status === 200) {
                 setPosted(true);
@@ -241,7 +244,7 @@ function Booking(){
                                     shouldDisableDate={(date) => {
                                         let booked = false;
                                         bookings.forEach(element => {
-                                            if(element.floor === selectedFloor && element.room === selectedRoom){
+                                            if(element.floor == selectedFloor && element.room == selectedRoom){
                                                     if(moment(date).isSameOrAfter(moment(element.arriveDate)) && moment(date).isSameOrBefore(moment(element.leaveDate))){
                                                         booked = true;
                                                     }
@@ -265,7 +268,7 @@ function Booking(){
                                     shouldDisableDate={(date) => {
                                         let booked = false;
                                         bookings.forEach(element => {
-                                            if(element.floor === selectedFloor && element.room === selectedRoom){
+                                            if(element.floor == selectedFloor && element.room == selectedRoom){
                                                     if(moment(date).isSameOrAfter(moment(element.arriveDate)) && moment(date).isSameOrBefore(moment(element.leaveDate))){
                                                         booked = true;
                                                     }
