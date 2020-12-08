@@ -10,7 +10,7 @@ function Footer() {
         <Box mt={8} className={classes.root}>
             <Typography variant="body2" color="textSecondary" align="center">
                 {'Copyright © '}
-                <Link color="inherit" href="http://localhost:3000/">
+                <Link color="inherit" href="https://hotelroombookingbackend.herokuapp.com/">
                     HotelRoomBooking
                 </Link>{' '}
                 {new Date().getFullYear()}
