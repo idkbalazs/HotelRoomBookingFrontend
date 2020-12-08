@@ -2,6 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://hotelroombookingappfrontend.herokuapp.com",
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
     "@material-ui/lab": "^4.0.0-alpha.56",
@@ -30,8 +31,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run prod",
-    "heroku-prebuild": "npm install -f"
+    "heroku-prebuild": "npm install -f",
+    "heroku-postbuild": "npm run prod"
   },
   "eslintConfig": {
     "extends": [
