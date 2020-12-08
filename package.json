@@ -26,7 +26,6 @@
     "react-router-dom": "^5.2.0"
   },
   "scripts": {
-    "start_url": "https://hotelroombookingappfrontend.herokuapp.com/",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
