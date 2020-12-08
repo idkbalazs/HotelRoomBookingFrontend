@@ -85,7 +85,7 @@ function Booking(){
 
     function getBookingsOnRoom(){
         axios.get(
-            "http://localhost:8080/bookings",
+            "https://hotelroombookingbackend.herokuapp.com/bookings",
             {auth: {username:authTokens.username, password:authTokens.password}}
         ).then(result => {
             if (result.status === 200) {
@@ -98,7 +98,7 @@ function Booking(){
   
     function getRooms() {
         axios.get(
-            "http://localhost:8080/rooms",
+            "https://hotelroombookingbackend.herokuapp.com/rooms",
             {auth: {username:authTokens.username, password:authTokens.password}}
         ).then(result => {
             if (result.status === 200) {
@@ -118,7 +118,7 @@ function Booking(){
     
     function getFloors() {
         axios.get(
-            "http://localhost:8080/rooms",
+            "https://hotelroombookingbackend.herokuapp.com/rooms",
             {auth: {username:authTokens.username, password:authTokens.password}}
         ).then(result => {
             if (result.status === 200) {
@@ -142,7 +142,7 @@ function Booking(){
 
     function postReservation() {
         console.log(selectedCheckIn);
-        axios.post(`http://localhost:8080/bookings/${authTokens.id}`, {
+        axios.post(`https://hotelroombookingbackend.herokuapp.com/bookings/${authTokens.id}`, {
             floor:selectedFloor,
             room:selectedRoom, 
             arriveDate:dateFormat(selectedCheckIn, "yyyy-mm-dd"),

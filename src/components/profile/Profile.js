@@ -29,7 +29,7 @@ function Profile(props) {
     };
 
     function changePassword() {
-        axios.put("http://localhost:8080/users/changepassword/" + authTokens.id, {
+        axios.put("https://hotelroombookingbackend.herokuapp.com/users/changepassword/" + authTokens.id, {
             password
         }, {auth: {username:authTokens.username, password:authTokens.password}}).then(result => {
             if (result.status === 200) {

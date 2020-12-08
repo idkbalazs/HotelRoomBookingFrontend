@@ -34,7 +34,7 @@ function SignUp() {
             setIsError(true);
             return;
         }
-        axios.post("http://localhost:8080/users/register", {
+        axios.post("https://hotelroombookingbackend.herokuapp.com/users/register", {
             name,
             username,
             password

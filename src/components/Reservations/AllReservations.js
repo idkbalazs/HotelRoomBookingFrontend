@@ -30,7 +30,7 @@ function Admin() {
     ]
 
     React.useEffect(() => {
-        axios.get("http://localhost:8080/bookings/all",
+        axios.get("https://hotelroombookingbackend.herokuapp.com/bookings/all",
             {auth: {username:authTokens.username, password:authTokens.password}}).then(result => {
             if (result.status === 200) {
                 setData(result.data);
@@ -41,10 +41,10 @@ function Admin() {
 
     function deleteReservation(props) {
         console.log(props);
-        axios.delete("http://localhost:8080/bookings/" + props, {auth: {username:authTokens.username, password:authTokens.password}}).then(result => {
+        axios.delete("https://hotelroombookingbackend.herokuapp.com/bookings/" + props, {auth: {username:authTokens.username, password:authTokens.password}}).then(result => {
             if (result.status === 200) {
                 if(data.length > 1) {
-                    axios.get(`http://localhost:8080/bookings/all`, {
+                    axios.get(`https://hotelroombookingbackend.herokuapp.com/bookings/all`, {
                         auth: {
                             username: authTokens.username,
                             password: authTokens.password
