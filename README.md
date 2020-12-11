@@ -83,6 +83,9 @@ Once signed in you will be able to book a room, specifying the floor on which th
 ![room](https://i.imgur.com/djaLbIL.png)
 ![date](https://i.imgur.com/kpJACFn.png)
 <br/>
+The dates on the calendar will turn gray, illustrating the days on which our selected room is already reserved.
+![reserved_room](https://i.imgur.com/ybfSN7L.png)
+<br/>
 <br/>
 Clicking on the profile icon on the top right corner of the page: 
 <br/>
@@ -130,3 +133,17 @@ Choosing the Log Out option you will be logged out and redirected to the home pa
 <br/>
 <br/>
 The admin has the option to view all the bookings under the User reservations menu item.
+<br/>
+<br/>
+![admin](https://i.imgur.com/3zNxjNf.png)
+<br/>
+And delete them, by following the methodology described above.
+
+### Note
+In case if the deployment doesn't work due to any service error, we would kindly ask you to download both the front end and the back end, and use the following commands:
+<br/> <br/> 
+ **Back end**: *mvc spring-boot:run*
+ <br/> <br/> 
+ **Front end**: *npm install* <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*npm run*      
+ <br/> <br/> 
