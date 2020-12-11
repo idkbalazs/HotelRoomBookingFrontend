@@ -47,7 +47,7 @@
  **User**: *Username* : userteszt 
            *Password* : password 
  <br/> <br/> 
- **Admin**:*Username* : admin 
+ **Admin**:*Username* : adminteszt 
            *Password* : password
  <br/> <br/> 
  ![Database](https://i.imgur.com/0HKWXEp.png)
@@ -145,5 +145,5 @@ In case if the deployment doesn't work due to any service error, we would kindly
  **Back end**: *mvc spring-boot:run*
  <br/> <br/> 
  **Front end**: *npm install* <br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*npm run*      
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*npm start*      
  <br/> <br/> 
