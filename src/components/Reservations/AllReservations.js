@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {useAuth} from "../connection/Auth";
 import MaterialTable from "material-table";
 import axios from "axios";
-import Reservations from "./UserReservations";
 import ReservationsStyles from "./ReservationsStyle";
 
 function Admin() {
@@ -37,7 +36,7 @@ function Admin() {
                 console.log(result.data);
             }
         })
-    }, [])
+    }, [authTokens.password, authTokens.username]) 
 
     function deleteReservation(props) {
         console.log(props);

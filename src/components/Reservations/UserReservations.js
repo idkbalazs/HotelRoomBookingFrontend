@@ -36,7 +36,7 @@ function Reservations() {
                 console.log(result.data);
             }
         })
-    }, [])
+    }, [authTokens.id, authTokens.password, authTokens.username])
 
     function deleteReservation(props) {
         console.log(props);

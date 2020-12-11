@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, {useEffect, useState} from 'react';
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -25,6 +26,7 @@ function Alert(props) {
 
 
 function Booking(){
+    /* eslint-disable no-unused-vars */
     const { authTokens } = useAuth();
     const classes = bookingStyles();
     const [value, setValue] = useState(0);
@@ -45,6 +47,7 @@ function Booking(){
     const [bookings, setBookings] = useState([]);
     const [bookedDate, setBookedDate] = useState(false);
     const [isRegistered, setRegistered] = useState(false);
+    /* eslint-disable no-unused-vars */
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -91,31 +94,31 @@ function Booking(){
             if (result.status === 200) {
                 setBookings(result.data);
             }
-            
+
         })
-    
+
     }
-  
+
     function getRooms() {
         axios.get(
             "https://hotelroombookingbackend.herokuapp.com/rooms",
             {auth: {username:authTokens.username, password:authTokens.password}}
         ).then(result => {
             if (result.status === 200) {
-                let filteredRooms = []; 
+                let filteredRooms = [];
                 result.data.forEach(element => {
                     if(element.floor === selectedFloor){
                         filteredRooms.push(element);
                     }
                 });
-               
-               setRooms(filteredRooms);
-               
+
+                setRooms(filteredRooms);
+
             }
         })
     }
 
-    
+
     function getFloors() {
         axios.get(
             "https://hotelroombookingbackend.herokuapp.com/rooms",
@@ -132,7 +135,7 @@ function Booking(){
                     filteredArray.push(element);
                 })
                 setFloors(filteredArray);
-               
+
             }
         })
     }
@@ -144,7 +147,7 @@ function Booking(){
         console.log(selectedCheckIn);
         axios.post(`https://hotelroombookingbackend.herokuapp.com/bookings/${authTokens.id}`, {
             floor:selectedFloor,
-            room:selectedRoom, 
+            room:selectedRoom,
             arriveDate:dateFormat(selectedCheckIn, "yyyy-mm-dd"),
             leaveDate:dateFormat(selectedCheckOut, "yyyy-mm-dd")
         }, {auth: {username:authTokens.username, password:authTokens.password}}).then(result => {
@@ -162,28 +165,28 @@ function Booking(){
     }
 
     const renderUserFields = () => {
-            return(
-                <Select
-                    labelId="subgenre-label"
-                    id="genre"
-                    color="primary"
-                    className={classes.textField}
-                    open={openFloor}
-                    onClose={handleFloorClose}
-                    onOpen={handleFloorOpen}
-                    value={selectedFloor}
-                    onChange={e => {
-                        setSelectedFloor(e.target.value);
-                    }}
-                >
-                    {floors.map((option) => (
-            <MenuItem key={option} value={option}>
-              {option}
-            </MenuItem>
-          ))}
-                </Select>
-            )
-        
+        return(
+            <Select
+                labelId="subgenre-label"
+                id="genre"
+                color="primary"
+                className={classes.textField}
+                open={openFloor}
+                onClose={handleFloorClose}
+                onOpen={handleFloorOpen}
+                value={selectedFloor}
+                onChange={e => {
+                    setSelectedFloor(e.target.value);
+                }}
+            >
+                {floors.map((option) => (
+                    <MenuItem key={option} value={option}>
+                        {option}
+                    </MenuItem>
+                ))}
+            </Select>
+        )
+
     }
 
     const renderRoomSelection = () => {
@@ -202,65 +205,66 @@ function Booking(){
                     setSelectedRoom(e.target.value);
                 }}
             >
-            {rooms.map((option) => ( 
-            <MenuItem key={option.roomNumber} value={option.roomNumber}>
-              {option.roomNumber}
-            </MenuItem>
-          ))}
+                {rooms.map((option) => (
+                    <MenuItem key={option.roomNumber} value={option.roomNumber}>
+                        {option.roomNumber}
+                    </MenuItem>
+                ))}
             </Select>
         )
-    
-}
+
+    }
 
     if(authTokens.role==="ROLE_USER") {
         return(
             <React.Fragment>
                 <Container maxWidth="lg" className={classes.user}>
-                  
-                            <Grid container spacing={3} align="center">
-                                <Grid item xs={12} className={classes.room} >
-                                    <Typography variant="h6" >Please choose the room you would like to book!</Typography>
-                                </Grid>
-                                <Grid item xs={12}  className={classes.room}>
-                                    <FormControl className={classes.textField} color="primary">
-                                        <InputLabel required id="floor" shrink>Floor</InputLabel>
-                                        {renderUserFields()}
-                                    </FormControl>
-                                    <FormControl className={classes.textField} color="primary">
-                                        <InputLabel required id="room" shrink>Room</InputLabel>
-                                        {renderRoomSelection()}
-                                    </FormControl>
-                                </Grid>
-                                
-                                   
-                            
-                                <Grid item xs={12} className={classes.room}>
-                                    
-                                <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                    <DatePicker
+
+                    <Grid container spacing={3} align="center">
+                        <Grid item xs={12} className={classes.room} >
+                            <Typography variant="h6" >Please choose the room you would like to book!</Typography>
+                        </Grid>
+                        <Grid item xs={12}  className={classes.room}>
+                            <FormControl className={classes.textField} color="primary">
+                                <InputLabel required id="floor" shrink>Floor</InputLabel>
+                                {renderUserFields()}
+                            </FormControl>
+                            <FormControl className={classes.textField} color="primary">
+                                <InputLabel required id="room" shrink>Room</InputLabel>
+                                {renderRoomSelection()}
+                            </FormControl>
+                        </Grid>
+
+
+
+                        <Grid item xs={12} className={classes.room}>
+
+                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                <DatePicker
                                     label="Check in"
                                     format="yyyy-MM-dd"
                                     value={selectedCheckIn}
                                     shouldDisableDate={(date) => {
                                         let booked = false;
                                         bookings.forEach(element => {
+                                            // eslint-disable-next-line eqeqeq
                                             if(element.floor == selectedFloor && element.room == selectedRoom){
-                                                    if(moment(date).isSameOrAfter(moment(element.arriveDate)) && moment(date).isSameOrBefore(moment(element.leaveDate))){
-                                                        booked = true;
-                                                    }
+                                                if(moment(date).isSameOrAfter(moment(element.arriveDate)) && moment(date).isSameOrBefore(moment(element.leaveDate))){
+                                                    booked = true;
+                                                }
                                             }
                                         });
-                                        return booked;       
+                                        return booked;
                                     }}
                                     onChange={selectedCheckIn => setSelectedCheckIn(selectedCheckIn)}
                                     minDate={new Date()}
-                                    />
-                                     </MuiPickersUtilsProvider>
-                                </Grid>
-                                    <Grid item xs={12} className={classes.gridAll}>
-                                   
-                                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                                    <DatePicker
+                                />
+                            </MuiPickersUtilsProvider>
+                        </Grid>
+                        <Grid item xs={12} className={classes.gridAll}>
+
+                            <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                <DatePicker
                                     label="Check out"
                                     format="yyyy-MM-dd"
                                     value={selectedCheckOut}
@@ -268,33 +272,34 @@ function Booking(){
                                     shouldDisableDate={(date) => {
                                         let booked = false;
                                         bookings.forEach(element => {
+                                            // eslint-disable-next-line eqeqeq
                                             if(element.floor == selectedFloor && element.room == selectedRoom){
-                                                    if(moment(date).isSameOrAfter(moment(element.arriveDate)) && moment(date).isSameOrBefore(moment(element.leaveDate))){
-                                                        booked = true;
-                                                    }
+                                                if(moment(date).isSameOrAfter(moment(element.arriveDate)) && moment(date).isSameOrBefore(moment(element.leaveDate))){
+                                                    booked = true;
+                                                }
                                             }
                                         });
-                                        return booked;     
+                                        return booked;
                                     }}
                                     minDate={selectedCheckIn}
-                                    /> 
-                                     </MuiPickersUtilsProvider> 
-                               
-                                </Grid>
-                                <Grid item xs={12} className={classes.gridAll}>
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        size="small"
-                                        onClick={(e)=>{postReservation()}}
-                                        className={classes.button}
-                                    >
-                                       Book
-                                    </Button>
-                                </Grid>
-                            </Grid>
-                    
-                  
+                                />
+                            </MuiPickersUtilsProvider>
+
+                        </Grid>
+                        <Grid item xs={12} className={classes.gridAll}>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                size="small"
+                                onClick={(e)=>{postReservation()}}
+                                className={classes.button}
+                            >
+                                Book
+                            </Button>
+                        </Grid>
+                    </Grid>
+
+
                     {isError &&
                     <Snackbar
                         open={isError}
@@ -324,7 +329,7 @@ function Booking(){
                 <Typography variant="h5">
                     You are not an User.
                 </Typography>
-               
+
             </div>
         );
     }

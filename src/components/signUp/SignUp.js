@@ -7,6 +7,7 @@ import Container from '@material-ui/core/Container';
 import signUpStyles from "./SignUpStyles";
 import Button from "@material-ui/core/Button";
 import Box from "@material-ui/core/Box";
+// eslint-disable-next-line no-unused-vars
 import {Link, Redirect} from 'react-router-dom';
 import axios from 'axios';
 import Parser from 'html-react-parser';
